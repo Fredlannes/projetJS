@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Mon projet Js</h1>
+
+    <fieldset ">
+        <legend>Mon wysiwyg</legend>
+        <div>
+            <label for="">Titre</label>
+            <input class="onChangeRefrechWysiwyg" type="text" id="titreWysiwyg">
+        </div>
+        <div>
+            <label for="">Src image</label>
+            <input class="onChangeRefrechWysiwyg" type="text" id="imgWysiwyg">
+        </div>
+        <div>
+            <label for="">Contenu</label><br>
+            <textarea class="onChangeRefrechWysiwyg" type="text" id="contentWysiwyg"></textarea>
+        </div>
+        
+        
+        <div>
+            <button id="btnGenererWysiwyg">Generer</button>
+        </div>
+    
+    </fieldset>
+    
+    <div id="resultatWysiwyg">
+        <h2 id="titreWysiwygResultat">Titre du wysiwyg</h2>
+        <img src="" alt="" id="imgWysiwygResultat">
+        <p id="contentWysiwygResultat"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
