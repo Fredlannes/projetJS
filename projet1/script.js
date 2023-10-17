@@ -24,6 +24,7 @@ function transformFieldsetIn(){
     let tousImput = document.querySelectorAll("input");
     tousImput.forEach(myInput => {
         myInput.style.padding = '5px'
+        myInput.style.transition = '0.5s'
     })
 }
 
