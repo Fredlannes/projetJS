@@ -1,4 +1,4 @@
-function calculGain(){
+function CalculGain(){
     let myForm = document.getElementById("formCalculGain");
     let formObjet = new FormData(myForm);
 
@@ -12,3 +12,5 @@ function calculGain(){
 
     let charges = formObjet.get('Charges')
 }
+
+myForm
