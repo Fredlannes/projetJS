@@ -1,16 +1,40 @@
-function CalculGain(){
+//arrondir le résultet à 2 decimales
+//raffraichir le resultat au changement de l'input (onchange et onkeyup)
+// verifier donner (si<0)
+// Animation?
+// Imprimer le page?
+
+const CalculGain = () => {
+    //on recupere le formulaire
     let myForm = document.getElementById("formCalculGain");
-    let formObjet = new FormData(myForm);
+    //on le transforme en objet formdata
+    let formObj = new FormData(myForm);
 
-    let tauxHorraire = formObjet.get("TH");
-    let tauxJournalier = formObjet.get("TJM");
-    let extras = formObjet.get("Extras");
+    //on recupere les inputs du formulaire par leur nom
+    let tauxHorraire = formObj.get("TH");
+    let tauxJournalier = formObj.get("TJM");
+    let extras = formObj.get("Extras");
 
-    let qteTauxHorraire = formObjet.get("qteTH");
-    let qteTauxJournalier = formObjet.get("qteTJM");
-    let qteExtras = formObjet.get("qteExtras");
+    let qteTauxHorraire = formObj.get("qteTH");
+    let qteTauxJournalier = formObj.get("qteTJM");
+    let qteExtras = formObj.get("qteExtras");
 
-    let charges = formObjet.get('Charges')
-}
+    let charges = formObj.get("Charges");
 
-myForm
+    //on commence le calcul
+    let gainHeure = tauxHorraire * qteTauxHorraire;
+    let gainJour = tauxJournalier * qteTauxJournalier;
+    let gainExtras = extras * qteExtras;
+
+    let totalBrut = gainHeure + gainJour + gainExtras;
+
+    
+    //total - charges%
+    //ChargeAdeduire - (total * (charges/100)
+    let ChargeAdeduire = totalBrut * (charges/100);
+    let totalNet = totalBrut - ChargeAdeduire;
+    
+    document.getElementById("resultatBrut").innerText = totalBrut + " €";
+    document.getElementById("resultatDifference").innerText = charges + " %";
+    document.getElementById("resultatNet").innerText = totalNet + " €";
+};
