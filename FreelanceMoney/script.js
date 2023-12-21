@@ -1,8 +1,11 @@
 //arrondir le résultet à 2 decimales
 //raffraichir le resultat au changement de l'input (onchange et onkeyup)
 // verifier donner (si<0)
-// Animation?
+// stocker les resultats(cookies)
+//historique de calcul (seulement si click sur calculer)
 // Imprimer le page?
+//convertir en pdf ou excel??
+// Animation?
 
 const CalculGain = () => {
     //on recupere le formulaire

@@ -13,7 +13,7 @@ h1 {
     text-align: center;
     padding: 25px;
     color: burlywood;
-    font-size: 4em;
+    font-size: 3em;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -23,7 +23,7 @@ h1 {
     margin: auto;
     border: 3px solid black;
     border-radius: 10px;
-    max-width: 700px;
+    max-width: 600px;
     background-color: rgba(84, 72, 22, 0.9);
     
 }
