@@ -52,8 +52,29 @@ const checkInput = () => {
         if(monInput.value < 0){
             monInput.value = 0;
         }
+        saveElementCookies(monInput)
     });
 };
+
+const saveElementCookies= (input) => {
+    document.cookie = input.name + ' = ' +input.value;
+}
+
+//recuperer les cookies 
+const getCookie = (input) => {
+    let mesCookies = document.cookie;
+
+    const name = input.name + "=";
+    const cookieTab = mesCookies.split("; ");
+    let valeurCookie = null;
+    cookieTab.forEach(cookie => {
+        if(cookie.indexOf(name) === 0){
+            valeurCookie = cookie.substring(name.length)
+        }
+    });
+    return valeurCookie
+}
+//mettre les valeurs dans les input
 
 let btn = document.getElementById("buttonValidation");
 btn.addEventListener("click", CalculGain)
@@ -61,8 +82,16 @@ btn.addEventListener("click", CalculGain)
 let mesInputs = document.querySelectorAll("#formCalculGain input.form-control");
 
 mesInputs.forEach(monInput => {
+    //s'il a une valeur en cookie lui donner
+    let cookie = getCookie(monInput);
+    if (cookie != undefined && cookie != null) {
+        monInput.value = cookie
+    }
+
+    getCookie(monInput);
     monInput.addEventListener("change", CalculGain);
     monInput.addEventListener("keyup", CalculGain);
     
 });
 
+CalculGain()
