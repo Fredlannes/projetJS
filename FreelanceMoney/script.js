@@ -1,13 +1,16 @@
-//arrondir le résultet à 2 decimales
-//raffraichir le resultat au changement de l'input (onchange et onkeyup)
-// verifier donner (si<0)
-// stocker les resultats(cookies)
-//historique de calcul (seulement si click sur calculer)
+//  V  arrondir le résultet à 2 decimales
+//  V  raffraichir le resultat au changement de l'input (onchange et onkeyup)
+//  V  verifier donner (si<0)
+//     stocker les resultats(cookies)
+//     historique de calcul (seulement si click sur calculer)
 // Imprimer le page?
 //convertir en pdf ou excel??
 // Animation?
 
 const CalculGain = () => {
+
+    //on verifie les inputs
+    checkInput()
     //on recupere le formulaire
     let myForm = document.getElementById("formCalculGain");
     //on le transforme en objet formdata
@@ -37,7 +40,29 @@ const CalculGain = () => {
     let ChargeAdeduire = totalBrut * (charges/100);
     let totalNet = totalBrut - ChargeAdeduire;
     
-    document.getElementById("resultatBrut").innerText = totalBrut + " €";
-    document.getElementById("resultatDifference").innerText = charges + " %";
-    document.getElementById("resultatNet").innerText = totalNet + " €";
+    document.getElementById("resultatBrut").innerText = totalBrut.toFixed(2) + " €";
+    document.getElementById("resultatDifference").innerText = ChargeAdeduire.toFixed(2) + " %";
+    document.getElementById("resultatNet").innerText = totalNet.toFixed(2) + " €";
 };
+
+const checkInput = () => {
+    let mesInputs = document.querySelectorAll("#formCalculGain input.form-control");
+    mesInputs.forEach(monInput => {
+        //verifier s'il vaut 0 ou +
+        if(monInput.value < 0){
+            monInput.value = 0;
+        }
+    });
+};
+
+let btn = document.getElementById("buttonValidation");
+btn.addEventListener("click", CalculGain)
+
+let mesInputs = document.querySelectorAll("#formCalculGain input.form-control");
+
+mesInputs.forEach(monInput => {
+    monInput.addEventListener("change", CalculGain);
+    monInput.addEventListener("keyup", CalculGain);
+    
+});
+
