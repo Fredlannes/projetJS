@@ -2,7 +2,7 @@
 //  V  raffraichir le resultat au changement de l'input (onchange et onkeyup)
 //  V  verifier donner (si<0)
 //  V  stocker les resultats(cookies)
-//  v   historique de calcul (seulement si click sur calculer)
+//     historique de calcul (seulement si click sur calculer)
 //      Animation?
 
 
