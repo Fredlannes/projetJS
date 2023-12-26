@@ -4,6 +4,9 @@
 //  V  stocker les resultats(cookies)
 //     historique de calcul (seulement si click sur calculer)
 //      Animation?
+//      Je veux créer une classe calculdata
+//  Le constructeur récupère un objet formdata en parametre
+//  et il sera similaire à l'objet Object ci-dessous
 
 
 const CalculGain = () => {
@@ -16,35 +19,41 @@ const CalculGain = () => {
     let formObj = new FormData(myForm);
 
     //on recupere les inputs du formulaire par leur nom
-    let tauxHorraire = formObj.get("TH");
-    let tauxJournalier = formObj.get("TJM");
-    let extras = formObj.get("Extras");
+    let myCalculDatas = {
 
-    let qteTauxHorraire = formObj.get("qteTH");
-    let qteTauxJournalier = formObj.get("qteTJM");
-    let qteExtras = formObj.get("qteExtras");
+        tauxHorraire : formObj.get("TH"),
+        tauxJournalier : formObj.get("TJM"),
+        extras : formObj.get("Extras"),
+        qteTauxHorraire : formObj.get("qteTH"),
+        qteTauxJournalier : formObj.get("qteTJM"),
+        qteExtras : formObj.get("qteExtras"),
+        charges : formObj.get("Charges"),
 
-    let charges = formObj.get("Charges");
-
-    //on commence le calcul
-    let gainHeure = tauxHorraire * qteTauxHorraire;
-    let gainJour = tauxJournalier * qteTauxJournalier;
-    let gainExtras = extras * qteExtras;
-
-    let totalBrut = gainHeure + gainJour + gainExtras;
-
-    
-    //total - charges%
-    //ChargeAdeduire - (total * (charges/100)
-    let ChargeAdeduire = totalBrut * (charges/100);
-    let totalNet = totalBrut - ChargeAdeduire;
-    
+        gainHeure: function(){
+            return this.tauxHorraire * this.qteTauxHorraire
+        },
+        gainJour : function(){
+            return this.tauxJournalier * this.qteTauxJournalier
+        },
+        gainExtras : function(){
+            return this.extras * this.qteExtras
+        },
+        totalBrut : function(){
+            return this.gainHeure() + this.gainJour() + this.gainExtras()
+        },
+        ChargeAdeduire :function(){
+            return (this.totalBrut() * (this.charges/100))
+        },
+        totalNet :function(){
+            return this.totalBrut() - this.ChargeAdeduire()
+        },
+    };
 
 
     //animer le resultat du brut
-    animateCompteur("resultatBrut", totalBrut)
-    animateCompteur("resultatDifference", ChargeAdeduire)
-    animateCompteur("resultatNet", totalNet)
+    animateCompteur("resultatBrut", myCalculDatas.totalBrut())
+    animateCompteur("resultatDifference", myCalculDatas.ChargeAdeduire())
+    animateCompteur("resultatNet", myCalculDatas.totalNet())
 
 };
 
