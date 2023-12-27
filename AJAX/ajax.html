@@ -3,18 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ajax.css">
     <title>Ajax exemple</title>
 </head>
 <body>
     <header>
         <h1>AJAX</h1>
     </header>
+    
 
-    <button id="afficherUser">Afficher les utilisateurs</button>
-    <div id="allUtilisateurs">
-        <i>les utilisateurs</i>
+    <div class="user-container" id="allUtilisateurs">
+        <div class="lds-ripple"><div></div><div></div></div>
     </div>
 
+    <div class="maPagination"id="pagination">
+
+    </div>
+    
     <script src="ajax.js"></script>
 </body>
 </html>
