@@ -30,9 +30,20 @@ body{
     background-color: cadetblue;
     color: whitesmoke;
 }
+    /*boutton et input*/
 
+.inputValue{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
 
-/* loader */
+.inputValue button, .inputValue input{
+    margin : 10px
+}
+
+    /* loader */
 
 .lds-ripple {
     display: inline-block;
