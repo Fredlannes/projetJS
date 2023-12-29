@@ -67,6 +67,10 @@ document.addEventListener("DOMContentLoaded", () => {
     getUsers(1)
 })
 
+
+ //--------------------creation user en methode xmlhttprequest---------------------//
+
+
 function createUser (){
     //on doit faire une requete post
     const xhr = new XMLHttpRequest();
@@ -97,6 +101,8 @@ function createUser (){
     let json = convertToJson(myForm)
     xhr.send(json);
 }
+
+ // --------------------meme code avec fetch je trouve mieux a faire ------------//
 
 function convertToJson(data){
     let object = {};
